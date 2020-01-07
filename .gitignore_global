@@ -1,0 +1,8 @@
+*~
+.DS_Store
+.nvmrc
+.watchman-cookie-*
+.vscode
+composer.phar
+elm-stuff
+node_modules

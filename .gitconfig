@@ -1,0 +1,97 @@
+[user]
+	name = Veit Lehmann
+	email = levito82@gmail.com
+[pull]
+	default = current
+	rebase = true
+[push]
+	default = simple
+# [branch "master"]
+# 	remote = origin
+# 	merge = refs/heads/master
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim
+	trustctime = false
+[difftool "kdiff3"]
+	path = /usr/local/bin/kdiff3
+[mergetool "kdiff3"]
+	path = /usr/local/bin/kdiff3
+[merge]
+	renamelimit = 20000
+	conflictstyle = diff3
+	tool = kdiff3
+[rerere]
+	enabled = true
+[alias]
+	aa = add -A
+	aam = !git add -A && git commit -v --amend
+	ac = !git add -A && git commit -m
+	acp = !git add -A && git commit -m \"$1\" && git push origin && echo >/dev/null
+	ap = add -p
+	az = !git add -A && git cz
+	bav = branch -av
+	bd = branch -D
+	brd = branch -rd
+	bu = branch -u
+	bv = branch -v
+	ch = cherry-pick -x
+	ci = commit -m
+	cia = commit -am
+	cam = commit -v --amend
+	cv = commit -v
+	cza = cz -a
+	co = checkout
+	cob = checkout -b
+	dci = duet-commit -m
+	dcv = duet-commit -v
+	drv = duet-revert
+	dmg = duet-merge
+	drb = rebase -i --exec 'git duet-commit --amend'
+	di = diff
+	dsf = "!git diff --color $@ | diff-so-fancy"
+	dsfl = "!git diff --color $@ | diff-so-fancy | less -RFX"
+	fe = fetch
+	fm = !git fetch origin master:master && git rebase origin/master
+	lg = log --graph --format='%cd %C(yellow)%h%C(red bold)%d%C(blue bold) [%an]%Creset %s' --date=short --abbrev=10
+	lga = log --graph --format='%cd %C(yellow)%h%C(red bold)%d%C(blue bold) [%an]%Creset %s' --date=short --abbrev=10 --all
+	lo = log
+	po = push origin
+	pu = pull origin
+	ri = rebase -i
+	sd = !git stash show -p stash@{$1=0} && echo >/dev/null
+	si = submodule init
+	sl = stash list
+	sp = stash pop
+	spu = !git ss && git pu && git sp
+	sr = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git diff-index --quiet HEAD; s=$?; [ $s != 0 ] && git stash save \"tmp stash from stash-rename\"; git stash apply $rev && shift && git stash save \"$@\" && [ $s != 0 ] && git stash pop stash@{1}; }; _"
+	ss = stash save -u
+	st = status
+	su = submodule update
+
+	publish = !git push origin HEAD:refs/publish/$1
+	draft = !git push origin HEAD:refs/drafts/$1
+	pum = push origin HEAD:refs/publish/master
+	drm = push origin HEAD:refs/drafts/master
+
+	work = config user.email \"veit.lehmann@aida.de\"
+	home = config user.email \"levito82@gmail.com\"
+[credential]
+	helper = osxkeychain
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
+# AIDA specific
+[url "https://github.com/"]
+	insteadOf = git://github.com/
+	insteadOf = git@github.com:
+# [mergetool]
+# 	trustExitCode = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
