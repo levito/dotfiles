@@ -11,33 +11,24 @@ compinit
 source $HOME/.zgen/zgen.zsh
 
 if ! zgen saved; then
-  # Load Oh-My-Zsh
   zgen oh-my-zsh
 
-  # Needs to be first plugin
-  zgen load seletskiy/zsh-zgen-compinit-tweak
+  zgen load seletskiy/zsh-zgen-compinit-tweak # must be first plugin
+  zgen load zsh-users/zsh-syntax-highlighting # must be before history substring search
 
-  # Syntax highlighting must be before history substring search
-  zgen load zsh-users/zsh-syntax-highlighting
-
-  # Oh-My-Zsh plugins
   zgen oh-my-zsh plugins/asdf
   zgen oh-my-zsh plugins/ssh-agent
   zgen oh-my-zsh plugins/history-substring-search
-  zgen oh-my-zsh plugins/z
+  zgen oh-my-zsh plugins/z # must be before fz
 
-  # More plugins
+  zgen load Aloxaf/fzf-tab
+  zgen load changyuheng/fz # must be after z
   zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-completions src
   zgen load viko16/gitcd.plugin.zsh
 
-  # Z must be before fz
-  zgen load changyuheng/fz
-
-  # Theme
   zgen load romkatv/powerlevel10k powerlevel10k
-
-  zgen save  
+  zgen save
 fi
 
 # Theme config for powerlevel10k
@@ -66,7 +57,7 @@ source ~/.asdf/plugins/java/set-java-home.sh
 export HISTIGNORE="ls:cd:cd -:-:pwd:exit:date:* --help"
 
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export PATH="$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$HOME/flutter/bin"
 
 export EDITOR='code -wg'
 export REACT_EDITOR='code -wg'
