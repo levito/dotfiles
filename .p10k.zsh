@@ -61,7 +61,8 @@
       # nodenv                # node.js version from nodenv (https://github.com/nodenv/nodenv)
       # nvm                   # node.js version from nvm (https://github.com/nvm-sh/nvm)
       # nodeenv               # node.js environment (https://github.com/ekalinin/nodeenv)
-      node_version            # node.js version
+      # node_version          # node.js version
+      node_version_uncached
       # go_version            # go version (https://golang.org)
       # rust_version          # rustc version (https://www.rust-lang.org)
       # dotnet_version        # .NET version (https://dotnet.microsoft.com)
@@ -875,6 +876,20 @@
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
   }
+  function prompt_node_version_uncached() {
+    (( $+commands[node] )) || return
+
+    if (( _POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY )); then
+      local dir=$_p9k_pwd
+      while true; do
+        [[ $dir == / ]] && return
+        [[ -e $dir/package.json ]] && break
+        dir=${dir:h}
+      done
+    fi
+
+    p10k segment -f green -i 'NODE_ICON' -r -t "${$(node --version 2> /dev/null)#v}"
+  }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
@@ -893,6 +908,9 @@
     # instant_prompt_example. This will give us the same `example` prompt segment in the instant
     # and regular prompts.
     prompt_example
+  }
+  function instant_prompt_node_version_uncached() {
+    prompt_node_version_uncached
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
