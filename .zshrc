@@ -34,24 +34,6 @@ fi
 # Theme config for powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Fancy mv
-autoload -U zmv
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias mmv='noglob zmv -W'
-alias ncu='npm-check --update'
-function mcd() {
-  mkdir -p "$@" && cd "$@";
-}
-function serve() {
-  local port="${1:-8000}";
-  # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-  # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-  python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
-}
-function gitk() {
-  command gitk "$@" > /dev/null 2>&1 &
-}
-
 source ~/.asdf/plugins/java/set-java-home.sh
 
 export HISTIGNORE="ls:cd:cd -:-:pwd:exit:date:* --help"
@@ -61,3 +43,32 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$AND
 
 export EDITOR='code -wg'
 export REACT_EDITOR='code -wg'
+
+# Fancy mv
+autoload -U zmv
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias mmv='noglob zmv -W'
+alias ncu='npm-check --update'
+
+function avd() {
+  pushd ${ANDROID_SDK_ROOT}/emulator
+  ./emulator -list-avds | cat -n
+  printf "Select AVD: "
+  read index
+  avd=$(./emulator -list-avds | sed "${index}q;d")
+  echo "Selected $avd"
+  ./emulator -netdelay none -netspeed full -avd $avd
+  popd
+}
+function gitk() {
+  command gitk "$@" > /dev/null 2>&1 &
+}
+function mcd() {
+  mkdir -p "$@" && cd "$@";
+}
+function serve() {
+  local port="${1:-8000}";
+  # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+  # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+  python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
+}
