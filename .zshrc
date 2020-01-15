@@ -17,15 +17,16 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-syntax-highlighting # must be before history substring search
 
   zgen oh-my-zsh plugins/asdf
-  zgen oh-my-zsh plugins/ssh-agent
+  zgen oh-my-zsh plugins/aws
   zgen oh-my-zsh plugins/history-substring-search
+  zgen oh-my-zsh plugins/ssh-agent
   zgen oh-my-zsh plugins/z # must be before fz
 
   zgen load Aloxaf/fzf-tab
   zgen load changyuheng/fz # must be after z
+  zgen load viko16/gitcd.plugin.zsh
   zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-completions src
-  zgen load viko16/gitcd.plugin.zsh
 
   zgen load romkatv/powerlevel10k powerlevel10k
   zgen save
@@ -36,7 +37,8 @@ fi
 
 source ~/.asdf/plugins/java/set-java-home.sh
 
-export HISTIGNORE="ls:cd:cd -:-:pwd:exit:date:* --help"
+HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd -|-|pwd|exit|date|* --help)'
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste) # fix zsh-autosuggestions
 
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$HOME/flutter/bin"
