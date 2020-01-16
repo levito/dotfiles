@@ -25,6 +25,7 @@ if ! zgen saved; then
   zgen load Aloxaf/fzf-tab
   zgen load changyuheng/fz # must be after z
   zgen load viko16/gitcd.plugin.zsh
+  zgen load wfxr/forgit
   zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-completions src
 
@@ -37,6 +38,19 @@ fi
 
 source ~/.asdf/plugins/java/set-java-home.sh
 
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+function pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+function pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+# DISABLE_AUTO_UPDATE=true # oh-my-zsh
 HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd -|-|pwd|exit|date|* --help)'
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste) # fix zsh-autosuggestions
 
