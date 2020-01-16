@@ -53,20 +53,16 @@ alias mmv='noglob zmv -W'
 alias ncu='npm-check --update'
 
 function avd() {
-  pushd ${ANDROID_SDK_ROOT}/emulator
-  ./emulator -list-avds | cat -n
+  local emulator=${ANDROID_SDK_ROOT}/emulator/emulator
+  $emulator -list-avds | cat -n
   printf "Select AVD: "
   read index
-  avd=$(./emulator -list-avds | sed "${index}q;d")
+  avd=$($emulator -list-avds | sed "${index}q;d")
   echo "Selected $avd"
-  ./emulator -netdelay none -netspeed full -avd $avd
-  popd
+  $emulator -netdelay none -netspeed full -avd $avd
 }
 function gitk() {
   command gitk "$@" > /dev/null 2>&1 &
-}
-function mcd() {
-  mkdir -p "$@" && cd "$@";
 }
 function serve() {
   local port="${1:-8000}";
