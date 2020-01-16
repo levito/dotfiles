@@ -8,6 +8,11 @@ fi
 autoload -Uz compinit
 compinit
 
+# Configure oh-my-zsh
+DISABLE_AUTO_UPDATE=true
+DISABLE_MAGIC_FUNCTIONS=true # fix zsh-autosuggestions, speed-up paste
+HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd -|-|pwd|exit|date|* --help)'
+
 source $HOME/.zgen/zgen.zsh
 
 if ! zgen saved; then
@@ -33,35 +38,16 @@ if ! zgen saved; then
   zgen save
 fi
 
-# Theme config for powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-source ~/.asdf/plugins/java/set-java-home.sh
-
-# This speeds up pasting w/ autosuggest
-# https://github.com/zsh-users/zsh-autosuggestions/issues/238
-function pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
-function pastefinish() {
-  zle -N self-insert $OLD_SELF_INSERT
-}
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
-
-# DISABLE_AUTO_UPDATE=true # oh-my-zsh
-HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd -|-|pwd|exit|date|* --help)'
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste) # fix zsh-autosuggestions
+[[ ! -f ~/.asdf/plugins/java/set-java-home.sh ]] || source ~/.asdf/plugins/java/set-java-home.sh
 
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$HOME/flutter/bin"
-
 export EDITOR='code -wg'
 export REACT_EDITOR='code -wg'
 
-# Fancy mv
 autoload -U zmv
+compdef dotfiles='git'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mmv='noglob zmv -W'
 alias ncu='npm-check --update'
