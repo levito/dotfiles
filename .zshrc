@@ -24,6 +24,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/asdf
   zgen oh-my-zsh plugins/aws
   zgen oh-my-zsh plugins/history-substring-search
+  zgen oh-my-zsh plugins/mix-fast
   zgen oh-my-zsh plugins/ssh-agent
   zgen oh-my-zsh plugins/z # must be before fz
 

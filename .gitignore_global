@@ -1,5 +1,6 @@
 *~
 .DS_Store
+.mix_tasks
 .nvmrc
 .watchman-cookie-*
 .vscode
