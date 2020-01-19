@@ -34,9 +34,6 @@ if ! zgen saved; then
   zgen save
 fi
 
-autoload -Uz compinit
-compinit
-
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f ~/.asdf/plugins/java/set-java-home.sh ]] || source ~/.asdf/plugins/java/set-java-home.sh
 
@@ -46,7 +43,6 @@ export EDITOR='code -wg'
 export REACT_EDITOR='code -wg'
 
 autoload -U zmv
-compdef dotfiles='git'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mmv='noglob zmv -W'
 alias ncu='npm-check --update'
