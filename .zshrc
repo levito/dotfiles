@@ -5,9 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-autoload -Uz compinit
-compinit
-
 # Configure oh-my-zsh
 DISABLE_AUTO_UPDATE=true
 DISABLE_MAGIC_FUNCTIONS=true # fix zsh-autosuggestions, speed-up paste
@@ -16,15 +13,12 @@ HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd -|-|pwd|exit|date|* --help)'
 source $HOME/.zgen/zgen.zsh
 
 if ! zgen saved; then
-  zgen oh-my-zsh
-
-  zgen load seletskiy/zsh-zgen-compinit-tweak # must be first plugin
   zgen load zsh-users/zsh-syntax-highlighting # must be before history substring search
 
+  zgen oh-my-zsh
   zgen oh-my-zsh plugins/asdf
   zgen oh-my-zsh plugins/aws
   zgen oh-my-zsh plugins/history-substring-search
-  zgen oh-my-zsh plugins/mix-fast
   zgen oh-my-zsh plugins/ssh-agent
   zgen oh-my-zsh plugins/z # must be before fz
 
@@ -34,11 +28,14 @@ if ! zgen saved; then
   zgen load viko16/gitcd.plugin.zsh
   zgen load wfxr/forgit
   zgen load zsh-users/zsh-autosuggestions
-  zgen load zsh-users/zsh-completions src
+  zgen load zsh-users/zsh-completions
 
   zgen load romkatv/powerlevel10k powerlevel10k
   zgen save
 fi
+
+autoload -Uz compinit
+compinit
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f ~/.asdf/plugins/java/set-java-home.sh ]] || source ~/.asdf/plugins/java/set-java-home.sh
