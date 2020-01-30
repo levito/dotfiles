@@ -4,3 +4,6 @@
 [submodule ".zgen"]
 	path = .zgen
 	url = https://github.com/tarjoilija/zgen.git
+[submodule ".nvs"]
+	path = .nvs
+	url = https://github.com/jasongin/nvs

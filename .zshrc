@@ -38,14 +38,17 @@ fi
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f ~/.asdf/plugins/java/set-java-home.sh ]] || source ~/.asdf/plugins/java/set-java-home.sh
-eval "`fnm env --multi`"
 
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export NVS_HOME="$HOME/.nvs"
 export PATH="$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$HOME/.gpkg:$HOME/.gpkg/bin:$HOME/flutter/bin:$PATH"
 export EDITOR='code -wg'
 export REACT_EDITOR='code -wg'
 
-autoload -U add-zsh-hook zmv
+[ -s "$NVS_HOME/nvs.sh" ] && . "$NVS_HOME/nvs.sh"
+nvs auto on
+
+autoload -U zmv
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mmv='noglob zmv -W'
 alias ncu='npm-check --update'
@@ -59,22 +62,6 @@ function avd() {
   echo "Selected $avd"
   $emulator -netdelay none -netspeed full -avd $avd
 }
-function find-up() {
-    local path=$PWD
-    while [[ "$path" != "" && ! -e "$path/$1" ]]; do
-        path=${path%/*}
-    done
-    echo "$path"
-}
-function load-nvmrc() {
-  local nvmrc_path=$(find-up .nvmrc)
-  if [ -n "$nvmrc_path" ]; then
-    nvm_version=`cat $nvmrc_path/.nvmrc`
-    fnm use $nvm_version &> /dev/null
-  else
-    fnm use default &> /dev/null
-  fi
-}
 function gitk() {
   command gitk "$@" &> /dev/null &
 }
@@ -84,6 +71,3 @@ function serve() {
   # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
   python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
 }
-
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc &> /dev/null
