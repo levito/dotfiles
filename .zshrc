@@ -40,7 +40,7 @@ fi
 [[ ! -f ~/.asdf/plugins/java/set-java-home.sh ]] || source ~/.asdf/plugins/java/set-java-home.sh
 
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export PATH="$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$HOME/flutter/bin"
+export PATH="$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$HOME/flutter/bin:$PATH"
 export EDITOR='code -wg'
 export REACT_EDITOR='code -wg'
 
@@ -59,7 +59,7 @@ function avd() {
   $emulator -netdelay none -netspeed full -avd $avd
 }
 function gitk() {
-  command gitk "$@" > /dev/null 2>&1 &
+  command gitk "$@" &> /dev/null &
 }
 function serve() {
   local port="${1:-8000}";
