@@ -18,6 +18,7 @@ if ! zgen saved; then
   zgen oh-my-zsh
   zgen oh-my-zsh plugins/asdf
   zgen oh-my-zsh plugins/aws
+  zgen oh-my-zsh plugins/github
   zgen oh-my-zsh plugins/history-substring-search
   zgen oh-my-zsh plugins/ssh-agent
   zgen oh-my-zsh plugins/z # must be before fz
@@ -25,6 +26,7 @@ if ! zgen saved; then
   zgen load Aloxaf/fzf-tab
   zgen load changyuheng/fz # must be after z
   zgen load hlolli/zsh-better-npm-completion # fork with npx support
+  zgen load levito/mix-fast
   zgen load viko16/gitcd.plugin.zsh
   zgen load wfxr/forgit
   zgen load zsh-users/zsh-autosuggestions
