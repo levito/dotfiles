@@ -12,6 +12,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim
+	pager = delta --dark
 	trustctime = false
 [difftool "kdiff3"]
 	path = /usr/local/bin/kdiff3
@@ -49,8 +50,6 @@
 	dmg = duet-merge
 	drb = rebase -i --exec 'git duet-commit --amend'
 	di = diff
-	dsf = "!git diff --color $@ | diff-so-fancy"
-	dsfl = "!git diff --color $@ | diff-so-fancy | less -RFX"
 	fe = fetch
 	fm = !git fetch origin master:master && git rebase origin/master
 	lg = log --graph --format='%cd %C(yellow)%h%C(red bold)%d%C(blue bold) [%an]%Creset %s' --date=short --abbrev=10
@@ -78,11 +77,6 @@
 	home = config user.email \"levito82@gmail.com\"
 [credential]
 	helper = osxkeychain
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
 
 # AIDA specific
 [url "https://github.com/"]
