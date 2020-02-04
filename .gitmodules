@@ -1,9 +1,9 @@
 [submodule ".asdf"]
 	path = .asdf
 	url = https://github.com/asdf-vm/asdf.git
+[submodule ".nvs"]
+	path = .nvs
+	url = https://github.com/levito/nvs
 [submodule ".zgen"]
 	path = .zgen
 	url = https://github.com/tarjoilija/zgen.git
-[submodule ".nvs"]
-	path = .nvs
-	url = https://github.com/jasongin/nvs
