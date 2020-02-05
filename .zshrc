@@ -45,8 +45,7 @@ export PATH="$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_S
 export EDITOR='code -wg'
 export REACT_EDITOR='code -wg'
 
-[ -s "$NVS_HOME/nvs.sh" ] && . "$NVS_HOME/nvs.sh"
-nvs auto on
+[ -s "$NVS_HOME/nvs.sh" ] && . "$NVS_HOME/nvs.sh" && nvs auto on
 
 autoload -U zmv
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
