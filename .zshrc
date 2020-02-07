@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export LANG=en_US.UTF-8
+
 # Configure oh-my-zsh
 DISABLE_AUTO_UPDATE=true
 DISABLE_MAGIC_FUNCTIONS=true # fix zsh-autosuggestions, speed-up paste
