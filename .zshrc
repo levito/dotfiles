@@ -70,6 +70,9 @@ function avd() {
 function gitk() {
   command gitk "$@" &> /dev/null &
 }
+function h() {
+  print -z $( fc -l 1 | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
 function serve() {
   local port="${1:-8000}";
   # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
