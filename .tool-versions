@@ -1,8 +1,10 @@
 elixir 1.10.0-otp-22
 erlang 22.2.5
+flutter 1.12.13+hotfix.8-stable
 gradle 6.0.1
 java adopt-openjdk-8u232-b09_openj9-0.17.0
 nodejs 12.14.0
 postgres 12.1
 python 2.7.17
+ruby 2.7.0
 rust stable

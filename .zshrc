@@ -10,7 +10,7 @@ export LANG=en_US.UTF-8
 # Configure oh-my-zsh
 DISABLE_AUTO_UPDATE=true
 DISABLE_MAGIC_FUNCTIONS=true # fix zsh-autosuggestions, speed-up paste
-HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd -|-|pwd|exit|date|* --help)'
+HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd -|-|d|h|1|2|3|4|5|6|7|8|9|..|...|....|.....|pwd|exit|date|* --help)'
 
 source $HOME/.zgen/zgen.zsh
 
@@ -60,12 +60,8 @@ alias ncu='npm-check --update'
 
 function avd() {
   local emulator=${ANDROID_SDK_ROOT}/emulator/emulator
-  $emulator -list-avds | cat -n
-  printf "Select AVD: "
-  read index
-  avd=$($emulator -list-avds | sed "${index}q;d")
-  echo "Selected $avd"
-  $emulator -netdelay none -netspeed full -avd $avd
+  local avd=$($emulator -list-avds | fzf --height=10 --reverse)
+  $emulator -avd $avd &> /dev/null &
 }
 function gitk() {
   command gitk "$@" &> /dev/null &

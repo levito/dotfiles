@@ -619,12 +619,12 @@
   # Ruby version from asdf.
   typeset -g POWERLEVEL9K_ASDF_RUBY_FOREGROUND=168
   # typeset -g POWERLEVEL9K_ASDF_RUBY_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_RUBY_SHOW_ON_UPGLOB='*.foo|*.bar'
+  typeset -g POWERLEVEL9K_ASDF_RUBY_SHOW_ON_UPGLOB='*.rb|.ruby-version|Gemfile|Podfile|Rakefile'
 
   # Python version from asdf.
   typeset -g POWERLEVEL9K_ASDF_PYTHON_FOREGROUND=37
   # typeset -g POWERLEVEL9K_ASDF_PYTHON_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  typeset -g POWERLEVEL9K_ASDF_PYTHON_SHOW_ON_UPGLOB='*.py'
+  typeset -g POWERLEVEL9K_ASDF_PYTHON_SHOW_ON_UPGLOB='*.py|.python-version'
 
   # Go version from asdf.
   typeset -g POWERLEVEL9K_ASDF_GO_FOREGROUND=37
@@ -639,7 +639,7 @@
   # Rust version from asdf.
   typeset -g POWERLEVEL9K_ASDF_RUST_FOREGROUND=131
   # typeset -g POWERLEVEL9K_ASDF_RUST_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  typeset -g POWERLEVEL9K_ASDF_RUST_SHOW_ON_UPGLOB='Cargo.toml|*.rs'
+  typeset -g POWERLEVEL9K_ASDF_RUST_SHOW_ON_UPGLOB='*.rs|Cargo.toml'
 
   # .NET Core version from asdf.
   typeset -g POWERLEVEL9K_ASDF_DOTNET_CORE_FOREGROUND=134
@@ -649,17 +649,22 @@
   # Flutter version from asdf.
   typeset -g POWERLEVEL9K_ASDF_FLUTTER_FOREGROUND=38
   # typeset -g POWERLEVEL9K_ASDF_FLUTTER_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_FLUTTER_SHOW_ON_UPGLOB='*.foo|*.bar'
+  typeset -g POWERLEVEL9K_ASDF_FLUTTER_SHOW_ON_UPGLOB='*.dart|pubspec.yaml'
 
   # Lua version from asdf.
   typeset -g POWERLEVEL9K_ASDF_LUA_FOREGROUND=32
   # typeset -g POWERLEVEL9K_ASDF_LUA_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # typeset -g POWERLEVEL9K_ASDF_LUA_SHOW_ON_UPGLOB='*.foo|*.bar'
 
+  # Gradle version from asdf.
+  typeset -g POWERLEVEL9K_ASDF_GRADLE_FOREGROUND=32
+  # typeset -g POWERLEVEL9K_ASDF_GRADLE_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_ASDF_GRADLE_SHOW_ON_UPGLOB='*.gradle'
+
   # Java version from asdf.
   typeset -g POWERLEVEL9K_ASDF_JAVA_FOREGROUND=32
   # typeset -g POWERLEVEL9K_ASDF_JAVA_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  # typeset -g POWERLEVEL9K_ASDF_JAVA_SHOW_ON_UPGLOB='*.foo|*.bar'
+  typeset -g POWERLEVEL9K_ASDF_JAVA_SHOW_ON_UPGLOB='*.java|*.gradle|.java-version|build.xml|pom.xml'
 
   # Perl version from asdf.
   typeset -g POWERLEVEL9K_ASDF_PERL_FOREGROUND=67
@@ -669,12 +674,12 @@
   # Erlang version from asdf.
   typeset -g POWERLEVEL9K_ASDF_ERLANG_FOREGROUND=125
   # typeset -g POWERLEVEL9K_ASDF_ERLANG_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  typeset -g POWERLEVEL9K_ASDF_ERLANG_SHOW_ON_UPGLOB='mix.exs|*.ex|*.erl'
+  typeset -g POWERLEVEL9K_ASDF_ERLANG_SHOW_ON_UPGLOB='*.ex|*.erl|mix.exs'
 
   # Elixir version from asdf.
   typeset -g POWERLEVEL9K_ASDF_ELIXIR_FOREGROUND=129
   # typeset -g POWERLEVEL9K_ASDF_ELIXIR_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  typeset -g POWERLEVEL9K_ASDF_ELIXIR_SHOW_ON_UPGLOB='mix.exs|*.ex'
+  typeset -g POWERLEVEL9K_ASDF_ELIXIR_SHOW_ON_UPGLOB='*.ex|.exenv-version|mix.exs'
 
   # Postgres version from asdf.
   typeset -g POWERLEVEL9K_ASDF_POSTGRES_FOREGROUND=31
