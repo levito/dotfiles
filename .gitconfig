@@ -50,6 +50,7 @@
 	dmg = duet-merge
 	drb = rebase -i --exec 'git duet-commit --amend'
 	di = diff
+	ds = diff --staged
 	fe = fetch
 	fm = !git fetch origin master:master && git rebase origin/master
 	lg = log --graph --format='%cd %C(yellow)%h%C(red bold)%d%C(blue bold) [%an]%Creset %s' --date=short --abbrev=10
