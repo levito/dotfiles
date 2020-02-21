@@ -55,6 +55,7 @@
 	lg = log --graph --format='%cd %C(yellow)%h%C(red bold)%d%C(blue bold) [%an]%Creset %s' --date=short --abbrev=10
 	lga = log --graph --format='%cd %C(yellow)%h%C(red bold)%d%C(blue bold) [%an]%Creset %s' --date=short --abbrev=10 --all
 	lo = log
+	mm = !git fetch origin master:master && git merge origin/master
 	po = push origin
 	pu = pull origin
 	rba = rebase --abort
