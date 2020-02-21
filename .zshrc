@@ -59,14 +59,19 @@ alias ncu='npm-check --update'
 
 function avd() {
   local emulator=${ANDROID_SDK_ROOT}/emulator/emulator
-  local avd=$($emulator -list-avds | fzf --height=10 --reverse)
+  local avd=$($emulator -list-avds | fzf --height=75% --reverse)
   $emulator -avd $avd &> /dev/null &
+}
+function gco() {
+  local branch=$(git branch --sort=-committerdate --no-color | fzf +s --height=75% --reverse)
+  [[ -n $branch ]] || return
+  git checkout $branch[3,-1]
 }
 function gitk() {
   command gitk "$@" &> /dev/null &
 }
 function h() {
-  print -z $( fc -l 1 | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+  print -z $(fc -l 1 | fzf +s --tac --height=75% | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 function serve() {
   local port="${1:-8000}";
