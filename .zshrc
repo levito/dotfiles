@@ -42,11 +42,12 @@ fi
 [[ ! -f ~/.asdf/plugins/java/set-java-home.sh ]] || source ~/.asdf/plugins/java/set-java-home.sh
 
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export NVS_HOME="$HOME/.nvs"
-export PATH="$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$HOME/.gpkg:$HOME/.gpkg/bin:$HOME/flutter/bin:$PATH"
+export PATH="$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"
+export PATH="$HOME/flutter/bin:$PATH"
+export PATH="$HOME/.gpkg:$HOME/.gpkg/bin:$PATH"
 export EDITOR='code -wg'
 export REACT_EDITOR='code -wg'
-
+export NVS_HOME="$HOME/.nvs"
 if [ -f "$NVS_HOME/nvs.sh" ]; then
   source "$NVS_HOME/nvs.sh"
   nvs use &> /dev/null
