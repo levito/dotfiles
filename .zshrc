@@ -60,9 +60,8 @@ alias mmv='noglob zmv -W'
 alias ncu='npm-check --update'
 
 function avd() {
-  local emulator=${ANDROID_SDK_ROOT}/emulator/emulator
-  local avd=$($emulator -list-avds | fzf --height=75% --reverse)
-  $emulator -avd $avd &> /dev/null &
+  local avd=$(emulator -list-avds | fzf --height=75% --reverse)
+  emulator -avd $avd &> /dev/null &
 }
 function gco() {
   local branch=$(git branch --sort=-committerdate --no-color | fzf +s --height=75% --reverse)
