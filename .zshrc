@@ -11,6 +11,7 @@ export LANG=en_US.UTF-8
 DISABLE_AUTO_UPDATE=true
 DISABLE_MAGIC_FUNCTIONS=true # fix zsh-autosuggestions, speed-up paste
 HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd -|-|d|h|1|2|3|4|5|6|7|8|9|..|...|....|.....|pwd|exit|date|* --help)'
+ZSH_DISABLE_COMPFIX=true
 
 source $HOME/.zgen/zgen.zsh
 
