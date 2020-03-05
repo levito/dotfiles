@@ -84,5 +84,9 @@ function serve() {
   # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
   python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
 }
+# http://www.zsh.org/mla/users//2014/msg00715.html
+function zshaddhistory() {
+  whence ${${(z)1}[1]} >| /dev/null || return 1
+}
 
 bindkey -s '^r' '^Q h^J'
