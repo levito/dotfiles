@@ -13,6 +13,21 @@ DISABLE_MAGIC_FUNCTIONS=true # fix zsh-autosuggestions, speed-up paste
 HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd -|-|d|h|1|2|3|4|5|6|7|8|9|..|...|....|.....|pwd|exit|date|* --help)'
 ZSH_DISABLE_COMPFIX=true
 
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+# https://unix.stackexchange.com/a/523762
+path[1,0]=(
+  $ANDROID_SDK_ROOT/{emulator,tools,tools/bin,platform-tools}(/N)
+  $HOME/{bin,.gpkg,.gpkg/bin}(/N)
+)
+export EDITOR='code -wg'
+export REACT_EDITOR='code -wg'
+export NVS_HOME="$HOME/.nvs"
+if [ -f "$NVS_HOME/nvs.sh" ]; then
+  source "$NVS_HOME/nvs.sh"
+  nvs use &> /dev/null
+  nvs auto on
+fi
+
 source $HOME/.zgen/zgen.zsh
 
 if ! zgen saved; then
@@ -41,19 +56,6 @@ fi
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f ~/.asdf/plugins/java/set-java-home.sh ]] || source ~/.asdf/plugins/java/set-java-home.sh
-
-export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export PATH="$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"
-export PATH="$HOME/flutter/bin:$PATH"
-export PATH="$HOME/.gpkg:$HOME/.gpkg/bin:$PATH"
-export EDITOR='code -wg'
-export REACT_EDITOR='code -wg'
-export NVS_HOME="$HOME/.nvs"
-if [ -f "$NVS_HOME/nvs.sh" ]; then
-  source "$NVS_HOME/nvs.sh"
-  nvs use &> /dev/null
-  nvs auto on
-fi
 
 autoload -U zmv
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
