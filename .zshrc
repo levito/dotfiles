@@ -75,6 +75,9 @@ function gitk() {
 function h() {
   print -z $(fc -l 1 | fzf +s --tac --height=75% | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
+function killport() {
+  lsof -nti tcp:$@ | xargs kill -9
+}
 function serve() {
   local port="${1:-8000}";
   # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
