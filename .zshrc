@@ -27,6 +27,7 @@ if ! zgen saved; then
 
   zgen load Aloxaf/fzf-tab
   zgen load changyuheng/fz # must be after z
+  zgen load hlissner/zsh-autopair
   zgen load hlolli/zsh-better-npm-completion # fork with npx support
   zgen load levito/mix-fast
   zgen load viko16/gitcd.plugin.zsh
