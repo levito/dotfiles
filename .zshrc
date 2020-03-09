@@ -35,6 +35,7 @@ if ! zgen saved; then
 
   zgen oh-my-zsh
   zgen oh-my-zsh plugins/asdf
+  zgen oh-my-zsh plugins/fd
   zgen oh-my-zsh plugins/github
   zgen oh-my-zsh plugins/history-substring-search
   zgen oh-my-zsh plugins/ssh-agent
