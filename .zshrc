@@ -55,8 +55,9 @@ if ! zgen saved; then
   zgen save
 fi
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-[[ ! -f ~/.asdf/plugins/java/set-java-home.sh ]] || source ~/.asdf/plugins/java/set-java-home.sh
+[ -f ~/.asdf/plugins/java/set-java-home.sh ] && source ~/.asdf/plugins/java/set-java-home.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 
 autoload -U zmv
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -75,9 +76,6 @@ function gco() {
 function gitk() {
   command gitk "$@" &> /dev/null &
 }
-function h() {
-  print -z $(fc -l 1 | fzf +s --tac --height=75% | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
-}
 function killport() {
   lsof -nti tcp:$@ | xargs kill -9
 }
@@ -91,5 +89,3 @@ function serve() {
 function zshaddhistory() {
   whence ${${(z)1}[1]} >| /dev/null || return 1
 }
-
-bindkey -s '^r' '^Q h^J'
