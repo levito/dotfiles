@@ -64,6 +64,7 @@ autoload -U zmv
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mmv='noglob zmv -W'
 alias ncu='npm-check --update'
+alias rg='rg --colors=match:fg:black --colors=match:bg:yellow'
 
 function avd() {
   local avd=$(emulator -list-avds | fzf --height=75% --reverse)
