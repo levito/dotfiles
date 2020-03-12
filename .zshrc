@@ -12,6 +12,7 @@ DISABLE_AUTO_UPDATE=true
 DISABLE_MAGIC_FUNCTIONS=true # fix zsh-autosuggestions, speed-up paste
 HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd ..|cd .|cd -|-|d|h|1|2|3|4|5|6|7|8|9|..|...|....|.....|pwd|exit|date|* --help)'
 ZSH_DISABLE_COMPFIX=true
+setopt HIST_SAVE_NO_DUPS
 
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 # https://unix.stackexchange.com/a/523762
