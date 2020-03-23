@@ -1,3 +1,4 @@
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -10,7 +11,7 @@ export LANG=en_US.UTF-8
 # Configure oh-my-zsh
 DISABLE_AUTO_UPDATE=true
 DISABLE_MAGIC_FUNCTIONS=true # fix zsh-autosuggestions, speed-up paste
-HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd ..|cd .|cd -|-|d|h|1|2|3|4|5|6|7|8|9|..|...|....|.....|pwd|exit|date|* --help)'
+HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd ..|cd .|cd -|-|d|1|2|3|4|5|6|7|8|9|..|...|....|.....|pwd|exit|date|* --help)'
 ZSH_DISABLE_COMPFIX=true
 setopt HIST_SAVE_NO_DUPS
 
