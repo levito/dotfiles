@@ -11,6 +11,7 @@ export LANG=en_US.UTF-8
 # Configure oh-my-zsh
 DISABLE_AUTO_UPDATE=true
 DISABLE_MAGIC_FUNCTIONS=true # fix zsh-autosuggestions, speed-up paste
+FZ_HISTORY_CD_CMD=zshz
 HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd ..|cd .|cd -|-|d|1|2|3|4|5|6|7|8|9|..|...|....|.....|pwd|exit|date|* --help)'
 ZSH_DISABLE_COMPFIX=true
 setopt HIST_SAVE_NO_DUPS
@@ -41,8 +42,8 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/github
   zgen oh-my-zsh plugins/history-substring-search
   zgen oh-my-zsh plugins/ssh-agent
-  zgen oh-my-zsh plugins/z # must be before fz
 
+  zgen load agkozak/zsh-z # must be before fz
   zgen load Aloxaf/fzf-tab
   zgen load changyuheng/fz # must be after z
   zgen load hlissner/zsh-autopair
