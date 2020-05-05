@@ -64,13 +64,15 @@
 	rbi = rebase -i
 	rbm = rebase master
 	rbs = rebase --skip
+	sa = stash apply
 	sd = !git stash show -p stash@{$1=0} && echo >/dev/null
 	si = submodule init
 	sl = stash list
 	sp = stash pop
 	spu = !git ss && git pu && git sp
 	sr = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git diff-index --quiet HEAD; s=$?; [ $s != 0 ] && git stash save \"tmp stash from stash-rename\"; git stash apply $rev && shift && git stash save \"$@\" && [ $s != 0 ] && git stash pop stash@{1}; }; _"
-	ss = stash save -u
+	ss = stash save
+	ssu = stash save -u
 	st = status
 	su = submodule update
 
