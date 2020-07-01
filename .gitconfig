@@ -97,3 +97,6 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npm-merge-driver merge %A %O %B %P
