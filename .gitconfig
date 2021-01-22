@@ -69,12 +69,13 @@
 	si = submodule init
 	sl = stash list
 	sp = stash pop
-	spu = !git ss && git pu && git sp
 	sr = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git diff-index --quiet HEAD; s=$?; [ $s != 0 ] && git stash save \"tmp stash from stash-rename\"; git stash apply $rev && shift && git stash save \"$@\" && [ $s != 0 ] && git stash pop stash@{1}; }; _"
 	ss = stash save
 	ssu = stash save -u
 	st = status
 	su = submodule update
+	sui = submodule update --init
+	sur = submodule update --remote
 
 	publish = !git push origin HEAD:refs/publish/$1
 	draft = !git push origin HEAD:refs/drafts/$1
@@ -85,18 +86,20 @@
 	home = config user.email \"levito82@gmail.com\"
 [credential]
 	helper = osxkeychain
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npm-merge-driver merge %A %O %B %P
+# [mergetool]
+# 	trustExitCode = true
+[rebase]
+	autostash = true
 
 # AIDA specific
 [url "https://github.com/"]
 	insteadOf = git://github.com/
 	insteadOf = git@github.com:
-# [mergetool]
-# 	trustExitCode = true
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-[merge "npm-merge-driver"]
-	name = automatically merge npm lockfiles
-	driver = npm-merge-driver merge %A %O %B %P
