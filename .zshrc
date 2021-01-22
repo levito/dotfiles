@@ -61,7 +61,6 @@ fi
 [ -f ~/.asdf/plugins/java/set-java-home.sh ] && source ~/.asdf/plugins/java/set-java-home.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
-[ -f /usr/local/opt/mcfly/mcfly.zsh ] && source /usr/local/opt/mcfly/mcfly.zsh
 
 autoload -U zmv
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
