@@ -16,6 +16,9 @@ HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd ..|cd .|cd -|-|d|1|2|3|4|5|6|7|8|9|..|...|
 ZSH_DISABLE_COMPFIX=true
 setopt HIST_SAVE_NO_DUPS
 
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 # https://unix.stackexchange.com/a/523762
 path[1,0]=(
