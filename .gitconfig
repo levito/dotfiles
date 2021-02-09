@@ -6,9 +6,6 @@
 	rebase = true
 [push]
 	default = simple
-# [branch "master"]
-# 	remote = origin
-# 	merge = refs/heads/master
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim
@@ -82,24 +79,12 @@
 	pum = push origin HEAD:refs/publish/master
 	drm = push origin HEAD:refs/drafts/master
 
-	work = config user.email \"veit.lehmann@aida.de\"
+	work = config user.email \"veit.lehmann@jimdo.com\"
 	home = config user.email \"levito82@gmail.com\"
 [credential]
 	helper = osxkeychain
 [merge "npm-merge-driver"]
 	name = automatically merge npm lockfiles
 	driver = npm-merge-driver merge %A %O %B %P
-# [mergetool]
-# 	trustExitCode = true
 [rebase]
 	autostash = true
-
-# AIDA specific
-[url "https://github.com/"]
-	insteadOf = git://github.com/
-	insteadOf = git@github.com:
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
