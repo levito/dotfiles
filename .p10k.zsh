@@ -61,7 +61,8 @@
     nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
     nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
     nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
-    node_version            # node.js version
+    # node_version          # node.js version
+    node_version_uncached
     # go_version            # go version (https://golang.org)
     # rust_version          # rustc version (https://www.rust-lang.org)
     # dotnet_version        # .NET version (https://dotnet.microsoft.com)
@@ -1529,6 +1530,13 @@
   function prompt_git_user() {
     git rev-parse &> /dev/null || return
     p10k segment -f 136 -i 'VCS_GIT_GITHUB_ICON' -r -t "$(git config --get user.email)"
+  }
+  function prompt_node_version_uncached() {
+    if (( _POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY )); then
+      _p9k_upglob package.json && return
+    fi
+    (( $+commands[node] )) || return
+    p10k segment -f green -i 'NODE_ICON' -r -t "${$(node --version 2> /dev/null)#v}"
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job

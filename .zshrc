@@ -20,19 +20,15 @@ zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export VOLTA_HOME="$HOME/.volta"
 # https://unix.stackexchange.com/a/523762
 path[1,0]=(
   $ANDROID_SDK_ROOT/{emulator,tools,tools/bin,platform-tools}(/N)
-  $HOME/{bin,.gpkg,.gpkg/bin}(/N)
+  $VOLTA_HOME/bin(/N)
+  $HOME/bin(/N)
 )
 export EDITOR='code -wg'
 export REACT_EDITOR='code -wg'
-export NVS_HOME="$HOME/.nvs"
-if [ -f "$NVS_HOME/nvs.sh" ]; then
-  source "$NVS_HOME/nvs.sh"
-  nvs use &> /dev/null
-  nvs auto on
-fi
 
 source $HOME/.zgen/zgen.zsh
 
