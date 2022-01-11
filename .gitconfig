@@ -33,10 +33,13 @@
 	brd = branch -rd
 	bu = branch -u
 	bv = branch -v
+	cam = commit -v --amend
+	cdf = clean -df
+	cdfx = clean -dfx
+	cfu = commit -v --fixup
 	ch = cherry-pick -x
 	ci = commit -m
 	cia = commit -am
-	cam = commit -v --amend
 	cv = commit -v
 	cza = cz -a
 	co = checkout
@@ -58,7 +61,7 @@
 	pu = pull origin
 	rba = rebase --abort
 	rbc = rebase --continue
-	rbi = rebase -i
+	rbi = rebase -i --autosquash
 	rbm = rebase master
 	rbs = rebase --skip
 	sa = stash apply

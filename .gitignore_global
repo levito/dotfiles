@@ -3,6 +3,8 @@
 .mix_tasks
 .watchman-cookie-*
 .vscode
+.yalc
 composer.phar
 elm-stuff
 node_modules
+yalc.lock

@@ -1,4 +1,3 @@
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -12,6 +11,7 @@ export LANG=en_US.UTF-8
 DISABLE_AUTO_UPDATE=true
 DISABLE_MAGIC_FUNCTIONS=true # fix zsh-autosuggestions, speed-up paste
 FZ_HISTORY_CD_CMD=zshz
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow'
 HISTORY_IGNORE='(l|la|ll|lsa|ls|cd|cd ..|cd .|cd -|-|d|1|2|3|4|5|6|7|8|9|..|...|....|.....|pwd|exit|date|* --help)'
 ZSH_DISABLE_COMPFIX=true
 setopt HIST_SAVE_NO_DUPS
@@ -19,8 +19,10 @@ setopt HIST_SAVE_NO_DUPS
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 
+[ -f ~/.env ] && source ~/.env
+
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export VOLTA_HOME="$HOME/.volta"
+export VOLTA_HOME=$HOME/.volta
 # https://unix.stackexchange.com/a/523762
 path[1,0]=(
   $ANDROID_SDK_ROOT/{emulator,tools,tools/bin,platform-tools}(/N)
@@ -58,6 +60,7 @@ if ! zgen saved; then
 fi
 
 [ -f ~/.asdf/plugins/java/set-java-home.sh ] && source ~/.asdf/plugins/java/set-java-home.sh
+[ -f ~/.config/broot/launcher/bash/br ] && source ~/.config/broot/launcher/bash/br
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 
@@ -71,7 +74,7 @@ function avd() {
   local avd=$(emulator -list-avds | fzf --height=75% --reverse)
   emulator -avd $avd &> /dev/null &
 }
-function gco() {
+function gcr() {
   local branch=$(git branch --sort=-committerdate --no-color | fzf +s --height=75% --reverse)
   [[ -n $branch ]] || return
   git checkout $branch[3,-1]
