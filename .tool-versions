@@ -4,6 +4,6 @@ flutter 2.2.3-stable
 gradle 6.0.1
 java adoptopenjdk-8.0.282+8.openj9-0.24.0
 postgres 12.1
-python 2.7.17
+python 3.10.5
 ruby 2.7.0
 rust stable
