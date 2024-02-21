@@ -1,0 +1,13 @@
+{
+    "*.css": {
+        "commenttype": "/* %s */"
+    },
+    "*.json": {
+        "commenttype": "/* %s */"
+    },
+    "colorcolumn": 72,
+    "colorscheme": "vscode",
+    "scrollmargin": 15,
+    "softwrap": true,
+    "wordwrap": true
+}
