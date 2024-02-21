@@ -35,7 +35,8 @@ path[1,0]=(
 export EDITOR='code -wg'
 export REACT_EDITOR='code -wg'
 
-source $HOME/.zgen/zgen.zsh
+source $HOME/.zgenom/zgenom.zsh
+alias zgen=zgenom
 
 if ! zgen saved; then
   zgen load zsh-users/zsh-syntax-highlighting # must be before history substring search
