@@ -1,0 +1,3 @@
+bind main <Ctrl-R> !git rebase -i --autosquash %(commit)^
+bind diff <Ctrl-R> !git rebase -i --autosquash %(commit)^
+bind status C !git commit -v
