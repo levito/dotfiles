@@ -22,11 +22,14 @@ zstyle ':completion:*' use-cache on
 [ -f ~/.env ] && source ~/.env
 
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export BUN_INSTALL=$HOME/.bun
 export VOLTA_HOME=$HOME/.volta
 # https://unix.stackexchange.com/a/523762
 path[1,0]=(
   $ANDROID_SDK_ROOT/{emulator,tools,tools/bin,platform-tools}(/N)
+  $BUN_INSTALL/bin(/N)
   $VOLTA_HOME/bin(/N)
+  $HOME/.console-ninja/.bin(/N)
   $HOME/bin(/N)
 )
 export EDITOR='code -wg'
@@ -60,6 +63,7 @@ if ! zgen saved; then
 fi
 
 [ -f ~/.asdf/plugins/java/set-java-home.sh ] && source ~/.asdf/plugins/java/set-java-home.sh
+[ -f ~/.bun/_bun ] && source ~/.bun/_bun
 [ -f ~/.config/broot/launcher/bash/br ] && source ~/.config/broot/launcher/bash/br
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
@@ -67,15 +71,15 @@ fi
 autoload -U zmv
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mmv='noglob zmv -W'
-alias ncu='npm-check --update'
+alias ncu='npx npm-check --update'
 alias rg='rg --colors=match:fg:black --colors=match:bg:yellow'
 
 function avd() {
-  local avd=$(emulator -list-avds | fzf --height=75% --reverse)
+  local avd=$(emulator -list-avds | fzf --height=20% --reverse)
   emulator -avd $avd &> /dev/null &
 }
 function gcr() {
-  local branch=$(git branch --sort=-committerdate --no-color | fzf +s --height=75% --reverse)
+  local branch=$(git branch --sort=-committerdate | fzf +s --height=80% --preview 'git show {+1} | delta')
   [[ -n $branch ]] || return
   git checkout $branch[3,-1]
 }
@@ -89,7 +93,7 @@ function serve() {
   local port="${1:-8000}";
   # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
   # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-  python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
+  python -m http.server "$port"
 }
 # http://www.zsh.org/mla/users//2014/msg00715.html
 function zshaddhistory() {
