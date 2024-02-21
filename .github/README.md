@@ -30,6 +30,11 @@ Some more recommended software (not configured/tracked via dotfiles yet, or no c
 bat encfs eza gocryptfs jq mdcat sirikali textadept trash visual-studio-code volta wezterm yazi
 ```
 
+Recommended global npm modules (install via `volta install`):
+```
+catj emma-cli fixpack git-recent np npkill npm-merge-driver npm-why prettier stylelint yalc
+```
+
 
 ## Installation
 
