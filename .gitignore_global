@@ -8,3 +8,6 @@ composer.phar
 elm-stuff
 node_modules
 yalc.lock
+
+# private notes, todos etc.
+PRIVATE_*.md

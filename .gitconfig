@@ -8,7 +8,7 @@
 	default = simple
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = vim
+	editor = micro
 	pager = delta --dark
 	trustctime = false
 [difftool "kdiff3"]
@@ -71,7 +71,9 @@
 	sp = stash pop
 	sr = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git diff-index --quiet HEAD; s=$?; [ $s != 0 ] && git stash save \"tmp stash from stash-rename\"; git stash apply $rev && shift && git stash save \"$@\" && [ $s != 0 ] && git stash pop stash@{1}; }; _"
 	ss = stash save
+	ssk = stash save -k
 	ssu = stash save -u
+	ssku = stash save -ku
 	st = status
 	su = submodule update
 	sui = submodule update --init
@@ -91,3 +93,5 @@
 	driver = npm-merge-driver merge %A %O %B %P
 [rebase]
 	autostash = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
