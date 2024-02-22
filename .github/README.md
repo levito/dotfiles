@@ -44,7 +44,7 @@ This will
 - prepare the `dotfiles` command to manage changes via git
 
 ```
-git clone --bare git@github.com:levito/dotfiles.git $HOME/.dotfiles
+git clone --bare https://github.com/levito/dotfiles.git $HOME/.dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dotfiles checkout
 dotfiles submodule update --init
