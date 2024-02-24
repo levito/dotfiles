@@ -18,7 +18,8 @@ set textwidth=80
 autocmd FileType gitcommit set textwidth=72
 
 " Color the 81st (or 73rd) column so that we don't type over our limit
-" set colorcolumn=+1
+set colorcolumn=+1
+hi ColorColumn ctermbg=8 ctermfg=15
 
 " Bash/Emacs-like navigation
 map <C-a> <Home>
