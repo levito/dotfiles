@@ -96,6 +96,15 @@ function serve() {
   # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
   python -m http.server "$port"
 }
+# https://yazi-rs.github.io/docs/quick-start#shell-wrapper
+function ya() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
 # http://www.zsh.org/mla/users//2014/msg00715.html
 function zshaddhistory() {
   whence ${${(z)1}[1]} >| /dev/null || return 1

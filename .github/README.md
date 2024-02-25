@@ -17,7 +17,7 @@ fzf git git-delta kdiff3 micro
 
 Optionally install additional software:
 ```
-android-sdk android-studio aspell broot bun fd gh git-gui ripgrep tig
+android-sdk android-studio aspell broot bun fd gh git-gui ripgrep tig yazi
 ```
 
 Install plugins for the micro editor:
@@ -27,7 +27,7 @@ aspell editorconfig filemanager fzf joinLines quoter wc
 
 Some more recommended software (not configured/tracked via dotfiles yet, or no config needed):
 ```
-bat encfs eza gocryptfs jq mdcat sirikali textadept trash visual-studio-code volta wezterm yazi
+bat encfs eza gocryptfs jq mdcat sirikali textadept trash visual-studio-code volta wezterm
 ```
 
 Recommended global npm modules (install via `volta install`):
