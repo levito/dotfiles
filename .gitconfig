@@ -64,6 +64,7 @@
 	rbi = rebase -i --autosquash
 	rbm = rebase master
 	rbs = rebase --skip
+	rmc = rm --cached
 	sa = stash apply
 	sd = !git stash show -p stash@{$1=0} && echo >/dev/null
 	si = submodule init
