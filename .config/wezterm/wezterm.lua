@@ -12,8 +12,8 @@ config.colors = {
   cursor_border = "#ccc",
   selection_fg = "#111",
   selection_bg = "#9df",
-  ansi    = { '#111', '#c67', '#695', '#c97', '#59d', '#b8b', '#4ba', '#ccc' },
-  brights = { '#444', '#f99', '#ad8', '#ed9', '#9df', '#ead', '#8dc', '#fff' },
+  ansi    = { '#111', '#c67', '#695', '#c97', '#59d', '#b8b', '#599', '#ccc' },
+  brights = { '#444', '#f99', '#ad8', '#ed9', '#9df', '#ead', '#6ca', '#fff' },
 
   -- -- 256 colors
   -- foreground = "#d0d0d0",
@@ -40,7 +40,7 @@ config.colors = {
   --   '#ffd787', -- 222
   --   '#87d7ff', -- 117
   --   '#ffafd7', -- 218
-  --   '#87ffd7', -- 122
+  --   '#5fd7af', -- 079
   --   '#ffffff', -- 231
   -- },
 
