@@ -11,6 +11,8 @@
 	editor = micro
 	pager = delta --dark
 	trustctime = false
+[delta]
+	syntax-theme = Visual Studio Dark+
 [difftool "kdiff3"]
 	path = /usr/local/bin/kdiff3
 [mergetool "kdiff3"]

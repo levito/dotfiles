@@ -4,6 +4,7 @@ local config = wezterm.config_builder()
 
 config.colors = {
   -- VSCode Dark+ inspired colors
+  -- 4096 colors
   foreground = "#ccc",
   background = "#111",
   cursor_fg = "#111",
@@ -11,8 +12,37 @@ config.colors = {
   cursor_border = "#ccc",
   selection_fg = "#111",
   selection_bg = "#9df",
-  ansi    = { '#111', '#d66', '#695', '#c97', '#59d', '#b8b', '#4ba', '#ccc' },
+  ansi    = { '#111', '#c67', '#695', '#c97', '#59d', '#b8b', '#4ba', '#ccc' },
   brights = { '#444', '#f99', '#ad8', '#ed9', '#9df', '#ead', '#8dc', '#fff' },
+
+  -- -- 256 colors
+  -- foreground = "#d0d0d0",
+  -- background = "#121212",
+  -- cursor_fg = "#121212",
+  -- cursor_bg = "#ffffff",
+  -- cursor_border = "#d0d0d0",
+  -- selection_fg = "#121212",
+  -- selection_bg = "#87d7ff",
+  -- ansi = {
+  --   '#121212', -- 233
+  --   '#af5f5f', -- 131
+  --   '#5f8700', -- 064
+  --   '#af875f', -- 137
+  --   '#5f87af', -- 067
+  --   '#af87af', -- 139
+  --   '#5fafaf', -- 073
+  --   '#d0d0d0', -- 252
+  -- },
+  -- brights = {
+  --   '#444444', -- 238
+  --   '#ff8787', -- 210
+  --   '#afd787', -- 150
+  --   '#ffd787', -- 222
+  --   '#87d7ff', -- 117
+  --   '#ffafd7', -- 218
+  --   '#87ffd7', -- 122
+  --   '#ffffff', -- 231
+  -- },
 
   -- Hide tab edges, tab bar background is also #333
   tab_bar = {
@@ -27,21 +57,6 @@ config.inactive_pane_hsb = {
 if string.find(wezterm.target_triple, 'darwin') then
   -- Bindings for Mac
   config.keys = {
-    {
-      key = 'D',
-      mods = 'SUPER|SHIFT',
-      action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
-    },
-    {
-      key = 'D',
-      mods = 'SUPER|SHIFT|ALT',
-      action = act.SplitVertical({ domain = 'CurrentPaneDomain' }),
-    },
-    {
-      key = 'Enter',
-      mods = 'SUPER|SHIFT',
-      action = act.TogglePaneZoomState,
-    },
     {
       key = 'LeftArrow',
       mods = 'SUPER',
@@ -72,10 +87,41 @@ if string.find(wezterm.target_triple, 'darwin') then
       mods = 'SUPER|ALT',
       action = act.ActivateTabRelative(1),
     },
+    {
+      key = "K",
+      mods = 'SUPER',
+      action = act.Multiple {
+        act.ClearScrollback('ScrollbackAndViewport'),
+        act.SendKey { key = 'L', mods = 'CTRL' },
+      },
+    },
+    {
+      key = 'D',
+      mods = 'SUPER|SHIFT',
+      action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
+    },
+    {
+      key = 'D',
+      mods = 'SUPER|SHIFT|ALT',
+      action = act.SplitVertical({ domain = 'CurrentPaneDomain' }),
+    },
+    {
+      key = 'Enter',
+      mods = 'SUPER|SHIFT',
+      action = act.TogglePaneZoomState,
+    },
   }
 else
   -- Bindings for Linux
   config.keys = {
+    {
+      key = "K",
+      mods = 'CTRL|SHIFT',
+      action = act.Multiple {
+        act.ClearScrollback('ScrollbackAndViewport'),
+        act.SendKey { key = 'L', mods = 'CTRL' },
+      },
+    },
     {
       key = 'D',
       mods = 'CTRL|SHIFT',
