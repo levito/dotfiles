@@ -9,8 +9,8 @@ config.colors = {
   cursor_fg = "#111",
   cursor_bg = "#fff",
   cursor_border = "#ccc",
-  selection_fg = "#fff",
-  selection_bg = "#357",
+  selection_fg = "#111",
+  selection_bg = "#9df",
   ansi    = { '#111', '#d66', '#695', '#c97', '#59d', '#b8b', '#4ba', '#ccc' },
   brights = { '#444', '#f99', '#ad8', '#ed9', '#9df', '#ead', '#8dc', '#fff' },
 
