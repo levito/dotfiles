@@ -2,6 +2,13 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 local config = wezterm.config_builder()
 
+local HYPER = 'CTRL|SHIFT'
+if string.find(wezterm.target_triple, 'darwin') then
+  HYPER = 'SUPER'
+end
+
+config.check_for_updates = false
+
 config.colors = {
   -- VSCode Dark+ inspired colors
   -- 4096 colors
@@ -50,103 +57,64 @@ config.colors = {
   }
 }
 
+config.font = wezterm.font_with_fallback {
+  { family = 'MesloLGS NF', weight = 'Bold' },
+  { family = 'JetBrains Mono', weight = 'Bold' },
+  'Noto Color Emoji',
+}
+config.font_size = 11
+config.freetype_load_target = 'HorizontalLcd'
+
 config.inactive_pane_hsb = {
   brightness = 0.5,
 }
 
-if string.find(wezterm.target_triple, 'darwin') then
-  -- Bindings for Mac
-  config.keys = {
-    {
-      key = 'LeftArrow',
-      mods = 'SUPER',
-      action = act.ActivatePaneDirection('Left'),
+config.keys = {
+  {
+    key = 'LeftArrow',
+    mods = HYPER,
+    action = act.ActivatePaneDirection 'Prev',
+  },
+  {
+    key = 'RightArrow',
+    mods = HYPER,
+    action = act.ActivatePaneDirection 'Next',
+  },
+  {
+    key = 'LeftArrow',
+    mods = HYPER .. '|ALT',
+    action = act.ActivateTabRelative(-1),
+  },
+  {
+    key = 'RightArrow',
+    mods = HYPER .. '|ALT',
+    action = act.ActivateTabRelative(1),
+  },
+  {
+    key = "K",
+    mods = HYPER,
+    action = act.Multiple {
+      act.ClearScrollback 'ScrollbackAndViewport',
+      act.SendKey{ key = 'L', mods = 'CTRL' },
     },
-    {
-      key = 'RightArrow',
-      mods = 'SUPER',
-      action = act.ActivatePaneDirection('Right'),
-    },
-    {
-      key = 'UpArrow',
-      mods = 'SUPER',
-      action = act.ActivatePaneDirection('Up'),
-    },
-    {
-      key = 'DownArrow',
-      mods = 'SUPER',
-      action = act.ActivatePaneDirection('Down'),
-    },
-    {
-      key = 'LeftArrow',
-      mods = 'SUPER|ALT',
-      action = act.ActivateTabRelative(-1),
-    },
-    {
-      key = 'RightArrow',
-      mods = 'SUPER|ALT',
-      action = act.ActivateTabRelative(1),
-    },
-    {
-      key = "K",
-      mods = 'SUPER',
-      action = act.Multiple {
-        act.ClearScrollback('ScrollbackAndViewport'),
-        act.SendKey { key = 'L', mods = 'CTRL' },
-      },
-    },
-    {
-      key = 'D',
-      mods = 'SUPER|SHIFT',
-      action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
-    },
-    {
-      key = 'D',
-      mods = 'SUPER|SHIFT|ALT',
-      action = act.SplitVertical({ domain = 'CurrentPaneDomain' }),
-    },
-    {
-      key = 'Enter',
-      mods = 'SUPER|SHIFT',
-      action = act.TogglePaneZoomState,
-    },
-  }
-else
-  -- Bindings for Linux
-  config.keys = {
-    {
-      key = "K",
-      mods = 'CTRL|SHIFT',
-      action = act.Multiple {
-        act.ClearScrollback('ScrollbackAndViewport'),
-        act.SendKey { key = 'L', mods = 'CTRL' },
-      },
-    },
-    {
-      key = 'D',
-      mods = 'CTRL|SHIFT',
-      action = act.SplitHorizontal({ domain = 'CurrentPaneDomain' }),
-    },
-    {
-      key = 'D',
-      mods = 'CTRL|SHIFT|ALT',
-      action = act.SplitVertical({ domain = 'CurrentPaneDomain' }),
-    },
-    {
-      key = 'Enter',
-      mods = 'CTRL|SHIFT',
-      action = act.TogglePaneZoomState,
-    },
-  }
+  },
+  {
+    key = 'D',
+    mods = HYPER .. '|SHIFT',
+    action = act.SplitHorizontal{ domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'D',
+    mods = HYPER .. '|SHIFT|ALT',
+    action = act.SplitVertical{ domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'Enter',
+    mods = HYPER .. '|SHIFT',
+    action = act.TogglePaneZoomState,
+  },
+}
 
-  -- Font tuning for Linux
-  config.font = wezterm.font('JetBrains Mono', { weight = 'Bold' })
-  config.font_size = 9
-  config.freetype_load_target = 'HorizontalLcd'
-
-  config.window_frame = {
-    font_size = 9,
-  }
-end
+config.scrollback_lines = 1000000
 
 return config

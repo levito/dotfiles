@@ -92,8 +92,6 @@ function killport() {
 }
 function serve() {
   local port="${1:-8000}";
-  # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-  # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
   python -m http.server "$port"
 }
 # https://yazi-rs.github.io/docs/quick-start#shell-wrapper
