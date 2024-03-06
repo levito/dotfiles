@@ -1,18 +1,20 @@
 [user]
 	name = Veit Lehmann
 	email = levito82@gmail.com
-[pull]
-	default = current
-	rebase = true
-[push]
-	default = simple
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCojVAWCkauwifJ2hMwk2FNIAOuwfEi8TGrTZjSFNbJaDRigS2N4NeAQkB7aWNoLWOuviQxjrvF8sKfU93ahdIu5n9VnclkqdyCsmoGGO7DyM2pIyMQ14awDpjnsBw/MTFiB/QxNcAx8P63/FmZ/3zyaLGEK86nwYxZ2JmX/oh9aBGOdutuSKxqxv0QbWEkh2RYuzMt8ZXsxxKFwN8pRGNZa997d0YeNlWS3jKwbcniq4V1G2ouVIEtOCwW2A/4k7J1RpnG77kNp5JTv4mq7ayD7UFfwNjmd2aAwfLsCDieVeabWyZHwHtN21rjY/Zaw+Powuz6zvfuC02Pf4TUyC8lqBGVDS58m/lC/YwMKJoEYB325ZJNZ7i2J/tNLD+r9L272Z99TOcK5gYQcd06aY/8QLA6vLpRs4jbNbM0ND+7RcD3rEMpvrEe9vg0vyVj5N99dncIR+/nTKQevci5HT914hoNlZ+RW+WAlrMYPA0F40hpkfDFx3Yavfbvgp8B/jrXisaL9pV/RhQPRyJxRc9TO/AWeuKA8MLXqlhncp7e3MqjXw2GyaG7ca5fmInrL3/JprV0xMS295x9zoe7CP1Tdo9ER2LpKBcSgTN3ODHjK8hIMwBsajmOcQjbC6EFmfiXUpT3gS91LMIN+AuCrcK/g3cRclDuMLhdwETtS72ptw==
+[commit]
+	gpgsign = true
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = micro
 	pager = delta --dark
 	trustctime = false
+[credential]
+	helper = osxkeychain
 [delta]
 	syntax-theme = Visual Studio Dark+
+[gpg]
+	format = ssh
 [difftool "kdiff3"]
 	path = /usr/local/bin/kdiff3
 [mergetool "kdiff3"]
@@ -21,8 +23,20 @@
 	renamelimit = 20000
 	conflictstyle = diff3
 	tool = kdiff3
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npm-merge-driver merge %A %O %B %P
+[pull]
+	default = current
+	rebase = true
+[push]
+	default = simple
+[rebase]
+	autostash = true
 [rerere]
 	enabled = true
+# [url "git@github.com:"]
+# 	insteadOf = https://github.com/
 [alias]
 	aa = add -A
 	aam = !git add -A && git commit -v --amend
@@ -89,12 +103,3 @@
 
 	work = config user.email \"veit.lehmann@jimdo.com\"
 	home = config user.email \"levito82@gmail.com\"
-[credential]
-	helper = osxkeychain
-[merge "npm-merge-driver"]
-	name = automatically merge npm lockfiles
-	driver = npm-merge-driver merge %A %O %B %P
-[rebase]
-	autostash = true
-[url "git@github.com:"]
-	insteadOf = https://github.com/
