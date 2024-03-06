@@ -3,8 +3,10 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 local HYPER = 'CTRL|SHIFT'
+local HYPER_SHIFT_OR_ALT = 'CTRL|SHIFT|ALT'
 if string.find(wezterm.target_triple, 'darwin') then
   HYPER = 'SUPER'
+  HYPER_SHIFT_OR_ALT = 'SUPER|SHIFT'
 end
 
 config.check_for_updates = false
@@ -91,21 +93,26 @@ config.keys = {
     action = act.ActivateTabRelative(1),
   },
   {
-    key = "K",
+    key = "k",
     mods = HYPER,
     action = act.Multiple {
       act.ClearScrollback 'ScrollbackAndViewport',
-      act.SendKey{ key = 'L', mods = 'CTRL' },
+      act.SendKey{ key = 'l', mods = 'CTRL' },
     },
   },
   {
-    key = 'D',
-    mods = HYPER .. '|SHIFT',
+    key = "o",
+    mods = HYPER,
+    action = act.ShowTabNavigator,
+  },
+  {
+    key = 'd',
+    mods = HYPER,
     action = act.SplitHorizontal{ domain = 'CurrentPaneDomain' },
   },
   {
-    key = 'D',
-    mods = HYPER .. '|SHIFT|ALT',
+    key = 'd',
+    mods = HYPER_SHIFT_OR_ALT,
     action = act.SplitVertical{ domain = 'CurrentPaneDomain' },
   },
   {
