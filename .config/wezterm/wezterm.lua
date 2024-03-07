@@ -22,8 +22,8 @@ config.colors = {
   cursor_border = "#ccc",
   selection_fg = "#111",
   selection_bg = "#8ce",
-  ansi    = { '#111', '#d67', '#8a7', '#da8', '#48b', '#c8c', '#6bb', '#ccc' },
-  brights = { '#444', '#f9a', '#bd9', '#ed9', '#8ce', '#faf', '#8ed', '#fff' },
+  ansi    = { '#111', '#d67', '#7a6', '#da8', '#48b', '#c8c', '#6bb', '#ccc' },
+  brights = { '#444', '#f9a', '#ad8', '#ed9', '#8ce', '#faf', '#8ed', '#fff' },
 
   tab_bar = {
     active_tab = {
