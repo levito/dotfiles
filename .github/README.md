@@ -5,14 +5,14 @@ Managed via plain git as documented at https://www.atlassian.com/git/tutorials/d
 
 ## Requirements
 
+Install required software:
+```
+git git-delta kdiff3 micro zsh
+```
+
 Set zsh as login shell:
 ```
 chsh -s $(which zsh)
-```
-
-Install required software:
-```
-fzf git git-delta kdiff3 micro
 ```
 
 Optionally install additional software:
@@ -22,7 +22,7 @@ android-sdk android-studio aspell bat broot bun fd gh git-gui ripgrep tig volta 
 
 Install plugins for the micro editor:
 ```
-aspell editorconfig filemanager fzf joinLines quoter wc
+micro -plugin install aspell editorconfig filemanager fzf joinLines quoter wc
 ```
 
 Some more recommended software (not configured/tracked via dotfiles yet, or no config needed):
