@@ -1675,7 +1675,7 @@
       _p9k_upglob package.json && return
     fi
     (( $+commands[node] )) || return
-    p10k segment -f green -i 'NODE_ICON' -r -t "${$(node --version 2> /dev/null)#v}"
+    p10k segment -f 70 -i 'NODE_ICON' -r -t "${$(node --version 2> /dev/null)#v}"
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job

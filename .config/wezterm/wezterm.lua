@@ -47,7 +47,8 @@ config.font = wezterm.font_with_fallback {
   { family = 'JetBrains Mono', weight = 'Bold' },
   'Noto Color Emoji',
 }
-config.font_size = 11
+-- Recommended font-size for Linux
+-- config.font_size = 9
 config.freetype_load_target = 'HorizontalLcd'
 
 config.inactive_pane_hsb = {
@@ -109,6 +110,8 @@ config.scrollback_lines = 100000
 
 -- config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.window_frame = {
+  -- Recommended font-size for Linux
+  -- font_size = 10,
   active_titlebar_bg = TITLEBAR_BG,
   inactive_titlebar_bg = TITLEBAR_BG,
 }
