@@ -17,7 +17,7 @@ chsh -s $(which zsh)
 
 Optionally install additional software:
 ```
-android-sdk android-studio aspell bat broot bun fd gh git-gui ripgrep tig volta wezterm yazi
+android-sdk android-studio aspell bat broot bun fd gh git-gui ripgrep tig wezterm yazi
 ```
 
 Install plugins for the micro editor:
@@ -30,9 +30,14 @@ Some more recommended software (not configured/tracked via dotfiles yet, or no c
 encfs eza gocryptfs jq mdcat sirikali textadept trash visual-studio-code
 ```
 
-Recommended global npm modules (install via `volta install`):
+For node support and management, install volta:
 ```
-catj emma-cli fixpack git-recent np npkill npm-merge-driver npm-why prettier stylelint yalc
+curl https://get.volta.sh | bash -s -- --skip-setup
+```
+
+Install recommended global npm modules:
+```
+volta install catj emma-cli fixpack git-recent np npkill npm-merge-driver npm-why prettier stylelint yalc
 ```
 
 It's recommended to install the [Meslo Nerd Font patched for Powerlevel10k](https://github.com/romkatv/powerlevel10k/tree/master?tab=readme-ov-file#meslo-nerd-font-patched-for-powerlevel10k) ([Source](https://github.com/romkatv/nerd-fonts)).
