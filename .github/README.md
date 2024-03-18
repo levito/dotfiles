@@ -22,12 +22,12 @@ android-sdk android-studio aspell bat broot bun fd gh git-gui ripgrep tig wezter
 
 Install plugins for the micro editor:
 ```
-micro -plugin install aspell editorconfig filemanager fzf joinLines quoter wc
+micro -plugin install aspell editorconfig filemanager fzf joinLines lsp quoter wc
 ```
 
 Some more recommended software (not configured/tracked via dotfiles yet, or no config needed):
 ```
-encfs eza gocryptfs jq mdcat sirikali textadept trash visual-studio-code
+encfs eza gocryptfs jq mdcat sirikali textadept trash typescript-language-server visual-studio-code
 ```
 
 For node support and management, install volta:

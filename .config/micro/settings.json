@@ -7,6 +7,9 @@
     },
     "colorcolumn": 72,
     "colorscheme": "vscode",
+    "lsp.autocompleteDetails": true,
+    "lsp.formatOnSave": false,
+    "lsp.server": "javascript=typescript-language-server --stdio,typescript=typescript-language-server --stdio",
     "scrollmargin": 10,
     "softwrap": true,
     "wordwrap": true

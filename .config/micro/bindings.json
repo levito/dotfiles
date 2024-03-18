@@ -4,12 +4,15 @@
     "\u001b[115;6u": "SaveAs",
     "<Ctrl-k><Ctrl-d>": "SkipMultiCursor",
     "Alt-/": "lua:comment.comment",
+    "Alt-d": "command:definition",
+    "Alt-f": "command:format",
     "Alt-h": "ToggleHelp",
     "Alt-j": "PlayMacro",
-    "Alt-k": "CutLine",
+    "Alt-k": "command:hover",
     "Alt-n": "FindNext",
-	"Alt-p": "FindPrevious",
-	"Alt-u": "ToggleMacro",
+    "Alt-p": "FindPrevious",
+    "Alt-r": "command:references",
+    "Alt-u": "ToggleMacro",
     "Alt-z": "lua:initlua.toggleSoftwrap",
     "Ctrl-/": "lua:comment.comment",
     "Ctrl-b": "lua:filemanager.toggle_tree",
@@ -49,6 +52,5 @@
     "ShiftEscape": "RemoveAllMultiCursors",
     "ShiftF3": "FindPrevious",
     "ShiftPageDown": "SelectPageDown",
-    "ShiftPageUp": "SelectPageUp",
-    "Tab": "IndentSelection|InsertTab"
+    "ShiftPageUp": "SelectPageUp"
 }
