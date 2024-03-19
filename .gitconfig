@@ -5,7 +5,7 @@
 [commit]
 	gpgsign = true
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore-global
 	editor = micro
 	pager = delta --dark
 	trustctime = false
