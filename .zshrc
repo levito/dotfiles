@@ -30,7 +30,6 @@ path[1,0]=(
   $BUN_INSTALL/bin(/N)
   $VOLTA_HOME/bin(/N)
   $HOME/.console-ninja/.bin(/N)
-  $HOME/.fzf/bin(/N)
   $HOME/bin(/N)
 )
 export EDITOR='code -wg'
@@ -64,10 +63,11 @@ if ! zgen saved; then
   zgen save
 fi
 
+eval "$(fzf --zsh)"
+
 [ -f ~/.asdf/plugins/java/set-java-home.sh ] && source ~/.asdf/plugins/java/set-java-home.sh
 [ -f ~/.bun/_bun ] && source ~/.bun/_bun
 [ -f ~/.config/broot/launcher/bash/br ] && source ~/.config/broot/launcher/bash/br
-[ -f ~/.fzf/shell/completions.zsh ] && source ~/.fzf/shell/completions.zsh
 [ -f ~/.fzf/shell/key-bindings.zsh ] && source ~/.fzf/shell/key-bindings.zsh
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 

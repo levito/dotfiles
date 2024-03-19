@@ -7,7 +7,7 @@ Managed via plain git as documented at https://www.atlassian.com/git/tutorials/d
 
 Install required software:
 ```
-git git-delta kdiff3 micro zsh
+fzf git git-delta kdiff3 micro zsh
 ```
 
 Set zsh as login shell:
